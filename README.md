@@ -1,33 +1,57 @@
-# 📚🗄 Online Book Store Sales Analysis (SQL)
+# 📚 Book Sales Data Control (SQL)
 
-## 📌 Project Overview
-This project analyzes **online book store sales data** using SQL to extract meaningful insights, calculate key performance indicators (KPIs), and support data-driven business decision-making. The analysis focuses on understanding sales performance, customer purchasing behavior, and product-level trends in a real-world retail scenario.
+## 🧩 Problem  
+Book sales data was spread across multiple tables with inconsistent keys, missing values, and mismatched records.  
+Directly querying this data risked inflated revenue, broken joins, and misleading business metrics.
 
-## 📊 📖 Sales Metrics & Analytical Insights
-- Total revenue and total orders across book categories
-- Average order value (AOV) calculation
-- Book-level and category-level sales performance
-- Customer purchasing patterns and preferences
-- Time-based sales trends (daily / monthly analysis)
+## 🎯 Objective  
+Design a reliable SQL-based data layer that produces accurate, business-ready sales metrics while preventing silent calculation errors.
 
-## 🛠 🧮 Tools & Technologies Used
-- SQL (SQL Server / MySQL)
-- Aggregate Functions & GROUP BY
-- Joins & Subqueries
-- KPI Computation
-- Business-Oriented Analytical Queries
+## 🚨 Data Issues Identified  
+- One-to-many joins inflating totals  
+- Missing prices and quantities  
+- Orphan records across tables  
+- Inconsistent book and author IDs  
+- Revenue totals not matching expectations  
 
-## 📈 📘 Business Value & Use Cases
-- Enables fast and accurate reporting of online book sales performance
-- Supports data-driven decisions for pricing, promotions, and inventory planning
-- Helps identify high-performing books and categories
-- Improves understanding of customer demand and buying behavior
-- Demonstrates strong SQL skills for analytics and reporting roles
+## 🛠️ Approach  
+1. Profiled each table to understand shape and quality  
+2. Tested joins to detect row multiplication  
+3. Standardized keys and filtering logic  
+4. Built controlled queries for:  
+   - Revenue by book  
+   - Revenue by author  
+   - Sales by category  
+5. Added guard queries to:  
+   - Detect nulls in critical fields  
+   - Flag unexpected row growth  
+   - Validate totals against base tables  
 
-## 📂 Files Included
-- `online_book_store_sales_analysis.sql` – SQL queries for KPI calculation and analysis
+## 🛡️ Validation & Control Logic  
+- Pre-join row count checks  
+- Post-join inflation detection  
+- Null-value guards on price and quantity  
+- Reconciliation of revenue across query layers  
 
-## 👤 Author
-Yash Shirture  
-Data Analyst | Excel • SQL • Power BI
+Queries are treated as **production assets**, not experiments.
+
+## 📊 Output  
+- Reliable sales summaries  
+- Author and category performance metrics  
+- Business-ready SQL result sets  
+
+## 💡 Why This Matters  
+SQL mistakes fail silently—and that’s dangerous.  
+This project is built to:
+
+- Assume joins can lie  
+- Catch row inflation early  
+- Prevent corrupted totals  
+- Produce numbers that can be trusted  
+
+The goal is not to “get results.”  
+The goal is **correct results**.
+
+## 🧰 Tools Used  
+- **SQL** – JOINs, Aggregations, Validation Queries, Reconciliation Logic  
 
